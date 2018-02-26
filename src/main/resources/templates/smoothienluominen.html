@@ -1,0 +1,100 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Smoothie</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"/> 
+        <style>
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li.menu {
+    float: left;
+}
+
+li a.menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover.menu {
+    background-color: #111;
+}
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+        <ul class="menu">
+            <li class="menu"><a class="menu" href="/smoothiearkisto">Kotisivu</a></li>
+            <li class="menu"><a class="menu" href="/smoothienluominen">Smoothiet</a></li>
+            <li class="menu"><a class="menu" href="/raaka-aineet">Raaka-aineet</a></li>
+        </ul>
+            
+        <div class="page-header">
+        <h1>Muokkaa smoothiereseptejä</h1>
+        </div>
+        <!--<h4> Talla sivulla voit muokata tai poistaa jo olemassaolevia ohjeitamme seka luoda kokonaan uusia smoothieresepteja. Aloita uuden reseptin luominen antamalla smoothiellesi ensin nimi ja painamalla Tallenna. Taman jalkeen paaset taydentamaan ohjettasi Muokkaa vanhoja resepteja -osiossa.</h4> -->
+        
+        <ul class="list-group">
+            <li class="list-group-item" th:each="smoothie: ${smoothiet}">
+               <a th:href="|/smoothiet/${smoothie.nimi}|" th:text="${smoothie.nimi}"></a>
+               <!-- <span th:text="${smoothie.nimi}"></span> -->
+            </li>
+        </ul><br/>
+        
+        
+        <h3> Lisää smoothie: </h3>
+        <form method="POST" action="/smoothienluominen">
+            <!-- <span>Anna smoothien nimi:</span><br/> -->
+            <input type="text" name="smoothienNimi" placeholder="smoothien nimi" th:required="required"/>
+            <br/>
+           
+            <input type="submit" value="Tallenna"/>
+            <br/>
+        </form>
+        <br/>
+        
+        <h3> Lisää aineksia: </h3>
+        <form method="POST" action="/smoothienmuokkaus">
+            <span>Valitse muokattava smoothie:</span>
+            <select th:name="valittusmoothie" class="form-control">
+                <option th:each="smoothie : ${smoothiet}" th:text="${smoothie.nimi}">
+                    varalta
+                </option>
+            </select>
+            <br/><br/>
+            <span>Valitse lisattava raaka-aine:</span>
+            <select th:name="valitturaaka-aine" class="form-control">
+                <option th:each="raakaaine : ${raakaaineet}" th:text="${raakaaine}">
+                    varalta
+                </option>
+            </select>
+            <br/><br/>
+            <span>Anna lisättävän raaka-aineen määrä:</span>
+            <br/>
+            <input type="text" name="maara" th:required="required"/>
+            <br/><br/>
+            <span>Kirjoita lisaohje raaka-aineelle:</span>
+            <br/>
+            <input type="text" name="ohje"/>
+            <br/><br/>
+            <input type="submit" value="Tallenna"/>
+        </form><br/>
+        
+        
+        <br/><a href="/smoothiearkisto">takaisin etusivulle</a>
+        
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Smoothie</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"/> 
+    <style>
+    ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li.menu {
+    float: left;
+}
+
+li a.menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover.menu {
+    background-color: #111;
+}        
+    </style>
+    </head>
+
+    <body>
+        <div class="container">
+        <ul class="menu">
+            <li class="menu"><a class="menu" href="/smoothiearkisto">Kotisivu</a></li>
+            <li class="menu"><a class="menu" href="/smoothienluominen">Smoothiet</a></li>
+            <li class="menu"><a class="menu" href="/raaka-aineet">Raaka-aineet</a></li>
+        </ul>
+        <div class="page-header">
+        <h1>Raaka-aineet</h1>
+        </div>
+        <h4> Talla sivulla voit lisata smoothieresepteissa kaytettavia raaka-aineita. 
+             Raaka-ainetta painamalla pääset näkemään kaikki smoothiet joissa sitä on käytetty.
+        </h4>
+
+        <ul class="list-group">
+            <li class="list-group-item" th:each="aines: ${ainekset}">
+                <a th:href="|/aine/${aines.nimi}|" th:text="${aines.nimi}"> hei </a> 
+                <!--<span th:text="${aines.nimi}"></span>   --> 
+            </li>
+        </ul><br/>
+        <span>Lisaa uusi raaka-aine:</span><br/>
+        <form method="POST" action="/raaka-aineet" >
+            <!--<span>Lisaa uusi raaka-aine:</span><br/> -->
+            <div class="form-group">
+            <input type="text" name="lisattava" required="required"/><br/>
+            <input type="submit" value="Lisaa"/>
+            </div>
+        </form><br/>
+        
+        <br/><a href="/smoothiearkisto">takaisin etusivulle</a>
+        </div>
+    </body>
+</html>

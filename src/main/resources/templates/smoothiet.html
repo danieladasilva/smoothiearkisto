@@ -1,0 +1,68 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Smoothie</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"/> 
+        <style>
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li.menu {
+    float: left;
+}
+
+li a.menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover.menu {
+    background-color: #111;
+}
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+        <ul class="menu">
+            <li class="menu"><a class="menu" href="/smoothiearkisto">Kotisivu</a></li>
+            <li class="menu"><a class="menu" href="/smoothienluominen">Smoothiet</a></li>
+            <li class="menu"><a class="menu" href="/raaka-aineet">Raaka-aineet</a></li>
+        </ul>
+        
+        <h1 th:text="${nimi}"> teksti </h1>
+        <h3> Tarvittavat raaka-aineet: </h3>
+        <div class="jumbotron">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Aines</th>
+                    <th>Määrä</th>
+                    <th>Ohje</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aines : ${smoothie.molemmat}">
+                <td th:text="${aines.key}"> jotain </td>
+                <td th:text="${aines.value.get(0)}"> jotain </td>
+                <td th:text="${aines.value.get(1)}"> jotain </td>
+               <!-- <td th:text="${aines.value}"> jotain </td> -->
+            </tr>
+            </tbody>
+        </table>
+        </div>
+        <br/><br/>
+        <a href="/smoothiearkisto">takaisin etusivulle</a>
+        </div>
+    </body>
+</html>
