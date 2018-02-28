@@ -1,0 +1,17 @@
+Smoothiearkisto
+
+Sovelluksessa voit tarkastella jo olemassaolevia smoothiereseptejä tai luoda kokonaan uusia. Omien reseptien luomiseen voit käyttää jo olemassaolevia raaka-aineita tai tarvittaessa luoda uusia.
+
+Sovelluksen navigointi tapahtuu kolmen välilehden (Kotisivu, Luo smoothie, Raaka-aineet) kautta. Välilegdet löytyvät kotisivun yläreunasta. Myös smoothieita ja raaka-aineita painamalla pääsee tarkastelemaan niihin liittyviä ominaisuuksia. 
+
+Kotisivu:
+Kotisivulta löydät listauksen smoothieresepteistä sekä lyhyen kuvauksen sivuston toiminnallisuudesta. Smoothien nimeä klikkaamalla pääset näkemään itse reseptin.
+
+Luo smoothie:
+Sivulla pääset luomaan uusia smoothieita tai lisäämään jo olemassaoleviin smoothiehin uusia raaka-aineita. Raaka-ainetta lisättäessä määritellään raaka-aineen määrä sekä mahdollinen lisäohje. Raaka-aineet tulee lisätä reseptiin yksitellen.
+
+Raaka-aineet:
+Sivulla pääset lisäämään uusia smoothieissa käytettäviä raaka-aineita. Lisäksi raaka-aineen nimeä klikkaamalle pääset tarkastelemaan, missä kaikissa resepteissä kyseistä raaka-ainetta on käytetty.
+
+Linkki sovellukseen: https://smoothiearkistoo.herokuapp.com/smoothiearkisto
+
