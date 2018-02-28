@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Smoothie</title>
-        <meta charset="utf-8" />
+        <title>Smoothiearkisto</title>
+        <meta charset="iso-8859-1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"/> 
         <style>
 ul.menu {
@@ -36,7 +36,7 @@ li a:hover.menu {
         <div class="container">
         <ul class="menu">
             <li class="menu"><a class="menu" href="/smoothiearkisto">Kotisivu</a></li>
-            <li class="menu"><a class="menu" href="/smoothienluominen">Smoothiet</a></li>
+            <li class="menu"><a class="menu" href="/smoothienluominen">Luo smoothie</a></li>
             <li class="menu"><a class="menu" href="/raaka-aineet">Raaka-aineet</a></li>
         </ul>
         
@@ -47,8 +47,8 @@ li a:hover.menu {
             <thead>
                 <tr>
                     <th>Aines</th>
-                    <th>M√§√§r√§</th>
-                    <th>Ohje</th>
+                    <th>M‰‰r‰</th>
+                    <th>Lis‰ohje</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,13 +56,12 @@ li a:hover.menu {
                 <td th:text="${aines.key}"> jotain </td>
                 <td th:text="${aines.value.get(0)}"> jotain </td>
                 <td th:text="${aines.value.get(1)}"> jotain </td>
-               <!-- <td th:text="${aines.value}"> jotain </td> -->
+              
             </tr>
             </tbody>
         </table>
         </div>
-        <br/><br/>
-        <a href="/smoothiearkisto">takaisin etusivulle</a>
+      
         </div>
     </body>
 </html>

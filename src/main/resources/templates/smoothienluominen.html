@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Smoothie</title>
-        <meta charset="utf-8" />
+        <title>Smoothiearkisto</title>
+        <meta charset="iso-8859-1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"/> 
         <style>
 ul.menu {
@@ -36,14 +36,14 @@ li a:hover.menu {
         <div class="container">
         <ul class="menu">
             <li class="menu"><a class="menu" href="/smoothiearkisto">Kotisivu</a></li>
-            <li class="menu"><a class="menu" href="/smoothienluominen">Smoothiet</a></li>
+            <li class="menu"><a class="menu" href="/smoothienluominen">Luo smoothie</a></li>
             <li class="menu"><a class="menu" href="/raaka-aineet">Raaka-aineet</a></li>
         </ul>
             
         <div class="page-header">
-        <h1>Muokkaa smoothiereseptej√§</h1>
+        <h1>Luo smoothie</h1>
         </div>
-        <!--<h4> Talla sivulla voit muokata tai poistaa jo olemassaolevia ohjeitamme seka luoda kokonaan uusia smoothieresepteja. Aloita uuden reseptin luominen antamalla smoothiellesi ensin nimi ja painamalla Tallenna. Taman jalkeen paaset taydentamaan ohjettasi Muokkaa vanhoja resepteja -osiossa.</h4> -->
+        <p> T‰ll‰ sivulla voit luoda uusia smoothiereseptej‰ sek‰ lis‰t‰ jo olemassaoleviin smoothieresepteihin uusia raaka-aineita. </p>
         
         <ul class="list-group">
             <li class="list-group-item" th:each="smoothie: ${smoothiet}">
@@ -53,18 +53,21 @@ li a:hover.menu {
         </ul><br/>
         
         
-        <h3> Lis√§√§ smoothie: </h3>
+        
+        <h4> Lis‰‰ uusi smoothie: </h4>
         <form method="POST" action="/smoothienluominen">
             <!-- <span>Anna smoothien nimi:</span><br/> -->
-            <input type="text" name="smoothienNimi" placeholder="smoothien nimi" th:required="required"/>
+            <input type="text" name="smoothienNimi" class="form-control" placeholder="Smoothien nimi" th:required="required"/>
             <br/>
            
-            <input type="submit" value="Tallenna"/>
+            <input type="submit" class="btn btn-default" value="Tallenna"/>
             <br/>
         </form>
         <br/>
         
-        <h3> Lis√§√§ aineksia: </h3>
+        
+        <h4> Lis‰‰ raaka-aineita: </h4>
+        <div class="jumbotron">
         <form method="POST" action="/smoothienmuokkaus">
             <span>Valitse muokattava smoothie:</span>
             <select th:name="valittusmoothie" class="form-control">
@@ -72,29 +75,28 @@ li a:hover.menu {
                     varalta
                 </option>
             </select>
-            <br/><br/>
-            <span>Valitse lisattava raaka-aine:</span>
+            <br/>
+            <span>Valitse lis‰tt‰v‰ raaka-aine:</span>
             <select th:name="valitturaaka-aine" class="form-control">
                 <option th:each="raakaaine : ${raakaaineet}" th:text="${raakaaine}">
                     varalta
                 </option>
             </select>
-            <br/><br/>
-            <span>Anna lis√§tt√§v√§n raaka-aineen m√§√§r√§:</span>
             <br/>
-            <input type="text" name="maara" th:required="required"/>
-            <br/><br/>
-            <span>Kirjoita lisaohje raaka-aineelle:</span>
+            <span>Anna lis‰tt‰v‰n raaka-aineen m‰‰r‰:</span>
             <br/>
-            <input type="text" name="ohje"/>
-            <br/><br/>
-            <input type="submit" value="Tallenna"/>
-        </form><br/>
+            <input type="text" name="maara" class="form-control" th:required="required"/>
+            <br/>
+            <span>Kirjoita lis‰ohje raaka-aineelle:</span>
+            <br/>
+            <input type="text" name="ohje" class="form-control"/>
+            <br/>
+            <input type="submit" class="btn btn-default" value="Tallenna"/>
+        </form>
         
-        
-        <br/><a href="/smoothiearkisto">takaisin etusivulle</a>
-        
-
         </div>
+        <br/>
+        </div>
+       
     </body>
 </html>

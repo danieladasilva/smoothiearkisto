@@ -1,8 +1,8 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8"/>
+        <title>Smoothiearkisto</title>
+        <meta charset="iso-8859-1"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"/> 
         <style>
 ul.menu {
@@ -34,13 +34,13 @@ li a:hover.menu {
         <div class="container">
         <ul class="menu">
             <li class="menu"><a class="menu" href="/smoothiearkisto">Kotisivu</a></li>
-            <li class="menu"><a class="menu" href="/smoothienluominen">Smoothiet</a></li>
+            <li class="menu"><a class="menu" href="/smoothienluominen">Luo smoothie</a></li>
             <li class="menu"><a class="menu" href="/raaka-aineet">Raaka-aineet</a></li>
         </ul>
         
         <h1 th:text="${nimi}">nimi</h1>
         <ul class="list-group">
-            <!--<li class="list-group-item" th:each="smoothie : ${smoothiet}" th:text="${smoothie.nimi}"> moi -->
+            
             <li class="list-group-item" th:each="smoothie: ${smoothiet}">
                <a th:href="|/smoothiet/${smoothie.nimi}|" th:text="${smoothie.nimi}"></a>
             </li>

@@ -19,19 +19,51 @@ public class Main {
         
         ArrayList<RaakaAine> ainekset = new ArrayList<>();
         ArrayList<Smoothie> smoothiet = new ArrayList<>();
-        /*
-        ainekset.add(new RaakaAine("banaani"));
-        ainekset.add(new RaakaAine("mustikka"));
-        RaakaAine mustikka = new RaakaAine("mustikka");
-     
-        HashMap marjarahkasmoothie = new HashMap<>();
-        marjarahkasmoothie.put(new RaakaAine("villivadelma"), "2 dl");
-        marjarahkasmoothie.put(mustikka, "1 dl");
         
-        smoothiet.add(new Smoothie("Marja-rahkasmoothie",
-                                    marjarahkasmoothie));
-        smoothiet.add(new Smoothie("Vihersmoothie"));
-        */
+        RaakaAine mustikka = new RaakaAine("mustikka");
+        ainekset.add(mustikka);
+        raakaAineMap.put("mustikka", mustikka);
+        
+        List<String> marjarahkasmoothiellelista = new ArrayList<>();
+        marjarahkasmoothiellelista.add("1 dl");
+        marjarahkasmoothiellelista.add(" ");
+        
+        RaakaAine rahka = new RaakaAine("rahka");
+        ainekset.add(rahka);
+        raakaAineMap.put("rahka", rahka);
+        
+        List<String> marjarahkasmoothiellelista2 = new ArrayList<>();
+        marjarahkasmoothiellelista2.add("1 prk");
+        marjarahkasmoothiellelista2.add(" ");
+        
+        RaakaAine banaani = new RaakaAine("banaani");
+        ainekset.add(banaani);
+        raakaAineMap.put("banaani", banaani);
+        
+        List<String> marjarahkasmoothiellelista3 = new ArrayList<>();
+        marjarahkasmoothiellelista3.add("1 kpl");
+        marjarahkasmoothiellelista3.add("Kuori ja pilko.");
+        
+        Smoothie smoothie1 = new Smoothie("Marja-rahkasmoothie");
+        smoothiet.add(smoothie1);
+        smoothieMap.put("Marja-rahkasmoothie", smoothie1);
+        
+        HashMap mapp1 = new HashMap<>();
+        mapp1.put(mustikka, marjarahkasmoothiellelista);
+        smoothie1.setMolemmat(mapp1);
+        mustikka.setSmoothie(smoothie1);
+        
+        HashMap mapp2 = new HashMap<>();
+        mapp2.put(rahka, marjarahkasmoothiellelista2);
+        smoothie1.setMolemmat(mapp2);
+        rahka.setSmoothie(smoothie1);
+        
+        HashMap mapp3 = new HashMap<>();
+        mapp3.put(banaani, marjarahkasmoothiellelista3);
+        smoothie1.setMolemmat(mapp3);
+        banaani.setSmoothie(smoothie1);
+        
+        
         Spark.get("/", (req, res) -> {
             res.redirect("/smoothiearkisto");
             return "";
@@ -55,7 +87,7 @@ public class Main {
             map.put("nimi", req.params(":nimi"));
             
             Smoothie haluttuSmoothie = smoothieMap.get(req.params(":nimi"));
-            System.out.println(haluttuSmoothie.nimi);
+           // System.out.println(haluttuSmoothie.nimi);
             
             map.put("smoothie", haluttuSmoothie);
             return new ModelAndView(map, "smoothiet");
@@ -117,10 +149,8 @@ public class Main {
         
         Spark.post("/raaka-aineet", (req, res) -> {
             String lisattava = req.queryParams("lisattava").toLowerCase();
-            
             RaakaAine luotuRaakaAine = new RaakaAine(lisattava);
             raakaAineMap.put(lisattava, luotuRaakaAine);
-       
             ainekset.add(luotuRaakaAine);
             res.redirect("/raaka-aineet");
             return "";
