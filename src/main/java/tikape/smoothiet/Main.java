@@ -11,9 +11,10 @@ import spark.template.thymeleaf.ThymeleafTemplateEngine;
 public class Main {
 
     public static void main(String[] args) {
-        //if (System.env("PORT") != null) {
-        //    Spark.port(Integer.valueOf(System.getenv("PORT")));
-        //}
+       
+        if (System.getenv("PORT") != null) {
+            Spark.port(Integer.valueOf(System.getenv("PORT")));
+        }
         Map<String, Smoothie> smoothieMap = new HashMap<>();
         Map<String, RaakaAine> raakaAineMap = new HashMap<>();
         
